@@ -39,8 +39,6 @@ def show_category(category_id):
 
 @app.route("/meal/<int:food_id>")
 def show_meal(food_id):
-    food_id += 1
-
     food = db.session.query(Food).filter_by(id=food_id).first_or_404()
     return render_template("meal.html", food=food)
 

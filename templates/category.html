@@ -10,9 +10,9 @@
 <section class="row-objects">
 	{% for j in range(0, food_list|length) %}
 
-	<div class="list-object list-object-parent" onClick="document.location='/meal/{{j}}'">
+	<div class="list-object list-object-parent" onClick="document.location='/meal/{{ food_list[j].id }}'">
 
-		<div class="list-object-category" style="background-image: url('..//static/media/s_{{ j }}.jpg');">
+		<div class="list-object-category" style="background-image: url('..//static/media/s_{{ food_list[j].id }}.jpg');">
 <!--			<h1>{{ j }}</h1>-->
 		</div>
 		<div> <h4> {{ food_list[j].name }} </h4> </div>
