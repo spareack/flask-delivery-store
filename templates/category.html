@@ -1,0 +1,61 @@
+
+{% extends 'base.html' %}
+
+{% block title %}
+	{{ category_name }}
+{% endblock %}
+
+{% block body %}
+<main>
+<section class="row-objects">
+	{% for j in range(0, food_list|length) %}
+
+	<div class="list-object list-object-parent" onClick="document.location='/meal/{{j}}'">
+
+		<div class="list-object-category" style="background-image: url('..//static/media/s_{{ j }}.jpg');">
+<!--			<h1>{{ j }}</h1>-->
+		</div>
+		<div> <h4> {{ food_list[j].name }} </h4> </div>
+		<div style="color: #000"> <h3> {{ food_list[j].price }}p </h3> </div>
+<!--		<a href="/category/{{j}}" style="display: block; position: fixed; z-index: 999999; text-align: center; height: 100%;"></a>-->
+	</div>
+	{% endfor %}
+</section>
+</main>
+<style>
+	.list-object-parent {
+		display: flex;
+        flex-direction: column;
+
+		cursor: pointer;
+		height: 18em;
+		background-color: #fff;
+        box-shadow: 0 10px 150px rgba(0,0,0,0.1);
+
+		align-items: center;
+	}
+	.list-object-category {
+
+        background-color: #666;
+
+        width: 10em;
+        height: 10em;
+
+		border-radius: 20px;
+
+<!--		box-shadow: 0 0px 10px rgba(0,0,0,0.05);-->
+
+		margin-left: 0;
+		margin-right: 0;
+
+		margin-top: 1em;
+		margin-bottom: 1em;
+
+		background-size: cover;
+	}
+	.list-object-parent:hover {
+		box-shadow: 0 0px 10px rgba(0,0,0,0.2);
+	}
+</style>
+
+{% endblock %}
