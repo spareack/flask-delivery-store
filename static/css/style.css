@@ -23,7 +23,7 @@
     .header-center {
         align-items: center;
         display: flex;
-        width: 70%;
+        width: 100%;
         justify-content: flex-start;
     }
     .header-object {
