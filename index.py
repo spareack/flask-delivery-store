@@ -18,7 +18,9 @@ class Categories(db.Model):
 class Food(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
-    price = db.Column(db.Integer, nullable=False)
+    price = db.Column(db.Integer)
+    weight = db.Column(db.String)
+    description = db.Column(db.String)
 
 
 @app.route("/")

@@ -12,12 +12,11 @@
 
 	<div class="list-object list-object-parent" onClick="document.location='/meal/{{ food_list[j].id }}'">
 
-		<div class="list-object-category" style="background-image: url('..//static/media/s_{{ food_list[j].id }}.jpg');">
-<!--			<h1>{{ j }}</h1>-->
-		</div>
-		<div> <h4> {{ food_list[j].name }} </h4> </div>
-		<div style="color: #000"> <h3> {{ food_list[j].price }}p </h3> </div>
-<!--		<a href="/category/{{j}}" style="display: block; position: fixed; z-index: 999999; text-align: center; height: 100%;"></a>-->
+<!--		<div class="list-object-category" style="background-image: url('..//static/media/s_{{ food_list[j].id }}.jpg');">-->
+		<div class="list-object-category" style="background-image: url('..//static/media/erik1.png');"></div>
+
+		<div> <h5> {{ food_list[j].name }} </h5> </div>
+		<div style="color: #000"> <h4> {{ food_list[j].price }}p </h4> </div>
 	</div>
 	{% endfor %}
 </section>
@@ -41,7 +40,7 @@
 		margin-left: 0;
 		margin-right: 0;
 		margin-top: 1em;
-		margin-bottom: 1em;
+		margin-bottom: 20px;
 		background-size: cover;
 	}
 	.list-object-parent:hover {
