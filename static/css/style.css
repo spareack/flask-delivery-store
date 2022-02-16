@@ -10,6 +10,7 @@
     header {
         background-color: #ffffff;
         width: 100%;
+
         box-shadow: 0 10px 150px rgba(0,0,0,0.1);
         height: 6.2em;
         margin-bottom: 2em;
@@ -58,11 +59,14 @@
     .list-object{
         box-shadow: 0 0px 10px rgba(0,0,0,0.1);
         background-color: #666;
+        min-width: 200px;
         width: 210px;
         height: 210px;
         border-radius: 20px;
         text-align: center;
         margin: 1em 1em;
+        flex: 3 0 20%;
+
     }
     .menu-button {
    		cursor: pointer;

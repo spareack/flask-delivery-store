@@ -12,11 +12,16 @@
 
 	<div class="list-object list-object-parent" onClick="document.location='/meal/{{ food_list[j].id }}'">
 
-<!--		<div class="list-object-category" style="background-image: url('..//static/media/s_{{ food_list[j].id }}.jpg');">-->
-		<div class="list-object-category" style="background-image: url('..//static/media/erik1.png');"></div>
+		<div class="list-object-category" style="background-image: url('..//static/media/s_{{ food_list[j].id }}.jpg');"></div>
+<!--		<div class="list-object-category" style="background-image: url('..//static/media/s_1.png');"></div>-->
 
-		<div> <h5> {{ food_list[j].name }} </h5> </div>
-		<div style="color: #000"> <h4> {{ food_list[j].price }}p </h4> </div>
+		<div style="max-width: 80%;"> <h5> {{ food_list[j].name }} </h5> </div>
+		<div style="margin-left: 0em; display: flex; flex-direction: raw;">
+
+			<div style="color: #000; margin-right: 8px;"> <h4> {{ food_list[j].price }} &#x20bd; </h4> </div>
+			<span style="display: flex; align-items: flex-end; margin-bottom: 8px;"> <h7 >{{ food_list[j].weight }} гр </h7> </span>
+		</div>
+
 	</div>
 	{% endfor %}
 </section>
@@ -25,15 +30,17 @@
 	.list-object-parent {
 		display: flex;
         flex-direction: column;
+		justify-content: space-evenly;
+
 		cursor: pointer;
-		height: 18em;
+		height: 22em;
 		background-color: #fff;
         box-shadow: 0 10px 150px rgba(0,0,0,0.1);
 		align-items: center;
 	}
 	.list-object-category {
         background-color: #666;
-        width: 10em;
+        width: 12em;
         height: 10em;
 		border-radius: 20px;
 <!--		box-shadow: 0 0px 10px rgba(0,0,0,0.05);-->
