@@ -33,7 +33,7 @@
         display: none;
     }
     .mobile-header {
-        display: block;
+        display: unset !important;
     }
     .small-screen {
         display: block;
