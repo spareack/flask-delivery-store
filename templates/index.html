@@ -8,16 +8,38 @@ Sushi
 
 {% block body %}
 <main>
-<section class="row-objects">
-    {# for j in range(0, (4 if (i == 0 and categories|length > 3) or categories|length / 4 > categories|length / i else categories|length % 4 + 1 )) #}
-    {% for j in range(0, categories|length) %}
 
-    <div class="list-object list-object-image" style="background-image: url('static/media/{{ j }}.png');">
-<!--    <div class="list-object list-object-image" style="background-image: url('static/media/erik1.png');">-->
-        <a href="/category/{{ j }}" style="display: block; text-align: center; height: 100%;"></a>
-    </div>
+<div class="default-screen">
+    {% for i in range(0, categories|length // 4 + (1 if categories|length % 4 != 0 else 0)) %}
+    <section class="row-objects">
+        {# for j in range(0, (4 if (i == 0 and categories|length > 3) or categories|length / 4 > categories|length / i else categories|length % 4 + 1 )) #}
+        {% for j in range(0, 4) %}
+            {% if i+j < categories|length %}
+            <div class="list-object list-object-image" style="background-image: url('static/media/{{ i+j }}.png');">
+        <!--    <div class="list-object list-object-image" style="background-image: url('static/media/erik1.png');">-->
+                <a href="/category/{{ i+j }}" style="display: block; text-align: center; height: 100%;"></a>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </section>
     {% endfor %}
-</section>
+</div>
+
+<div class="small-screen">
+    {% for i in range(0, categories|length // 2 + (1 if categories|length % 2 != 0 else 0)) %}
+    <section class="row-objects">
+        {% for j in range(0, 2) %}
+            {% if i+j < categories|length %}
+            <div class="list-object list-object-image" style="background-image: url('static/media/{{ i+j }}.png');">
+        <!--    <div class="list-object list-object-image" style="background-image: url('static/media/erik1.png');">-->
+                <a href="/category/{{ i+j }}" style="display: block; text-align: center; height: 100%;"></a>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </section>
+    {% endfor %}
+</div>
+
 </main>
 <style>
     .list-object:hover {

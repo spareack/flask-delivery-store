@@ -1,0 +1,45 @@
+
+/*wide screen*/
+
+@media only screen and (max-width: 1190px) {
+    .list-object {
+        min-width: unset;
+        max-height: unset;
+
+        height: 22vw;
+    }
+    .row-objects {
+        justify-content: space-around;
+
+    }
+    main{
+        width: 95%;
+    }
+}
+/*meidum desktops*/
+
+@media only screen and (max-width: 992px) {
+
+}
+/*small devices*/
+@media only screen and (max-width: 768px) {
+    .small-screen {
+        display: block;
+    }
+    .default-screen {
+    display: none;
+    }
+    .list-object {
+        height: 40vw;
+    }
+}
+/*phones*/
+
+@media only screen and (max-width: 480px) {
+
+}
+/**/
+
+@media only screen and (max-width: 320px) {
+
+}
