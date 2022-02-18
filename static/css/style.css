@@ -1,3 +1,6 @@
+    html {
+
+    }
     body {
         background-color: #f2f3f3;
         color: #54595F;
@@ -5,7 +8,7 @@
         padding: 0;
         width: 100vw;
         height: 100vh;
-        font-size: 16px !important;
+        font-size: 20px !important;
     }
     header {
         background-color: #ffffff;
@@ -14,6 +17,7 @@
         box-shadow: 0 10px 150px rgba(0,0,0,0.1);
         height: 6.2em;
         margin-bottom: 2em;
+        align-items: center;
         display: flex !important;
         justify-content: flex-start;
     }
@@ -69,13 +73,21 @@
         background-color: #5bb9c7;
         width: 24em;
         height: 6.2em;
-        padding-right: 3em;
+        padding-right: 50px;
+
         /*position: absolute;*/
         border-top-right-radius: 20px;
         border-bottom-right-radius: 20px;
         box-shadow: 0 0px 10px rgba(0,0,0,0.1);
+
+        display: flex;
+        justify-content: flex-end;
     }
     .small-screen {
+        display: none;
+    }
+
+    .mobile-header {
         display: none;
     }
 

@@ -5,7 +5,6 @@
     .list-object {
         min-width: unset;
         max-height: unset;
-
         height: 22vw;
     }
     .row-objects {
@@ -15,6 +14,13 @@
     main{
         width: 95%;
     }
+
+    .list-object-parent {
+    height: 30em;
+        max-height: unset;
+    }
+
+
 }
 /*meidum desktops*/
 
@@ -23,6 +29,12 @@
 }
 /*small devices*/
 @media only screen and (max-width: 768px) {
+    .default-header {
+        display: none;
+    }
+    .mobile-header {
+        display: block;
+    }
     .small-screen {
         display: block;
     }
@@ -31,6 +43,20 @@
     }
     .list-object {
         height: 40vw;
+    }
+    .header-object {
+        margin: 0 10px;
+    }
+
+    /*categories*/
+    .list-object-parent {
+		width: 21vw;
+		height: 21vw;
+
+    }
+    .list-object-category {
+        width: 12vw;
+        height: 10vw;
     }
 }
 /*phones*/
