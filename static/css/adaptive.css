@@ -24,7 +24,20 @@
 }
 /*meidum desktops*/
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 1100px) {
+
+    .header-object-default-lang {
+        display: none !important;
+    }
+
+}
+@media only screen and (max-width: 900px) {
+    .header-object-default-sales {
+        display: none !important;
+    }
+    .def-header-object-label {
+        font-size: 25px !important;
+    }
 
 }
 /*small devices*/
@@ -58,10 +71,20 @@
         width: 12vw;
         height: 10vw;
     }
+
+    .def-slider {
+        display: none !important;
+    }
+    .small-slider {
+        display: block !important;
+    }
 }
 /*phones*/
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 430px) {
+    .header-object-sales {
+        display: none !important;
+    }
 
 }
 /**/

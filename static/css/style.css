@@ -68,7 +68,7 @@
     .menu-button {
    		cursor: pointer;
         background-color: #5bb9c7;
-        width: 24em;
+        width: 24vw;
         height: 6.2em;
         padding-right: 50px;
 
@@ -86,4 +86,14 @@
     .mobile-header {
         display: none;
     }
+    .splide__slide__container {
+        background-repeat: no-repeat;
+        display: flex;
+        justify-content: space-evenly;
+        width: 100vw%;
+    }
+    .banner-small-image {
+
+    }
+
 

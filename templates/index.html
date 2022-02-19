@@ -8,6 +8,46 @@ Sushi
 
 {% block body %}
 <main>
+	<script src="/static/splide/dist/js/splide.min.js"></script>
+    <link rel="stylesheet" href="/static/splide/dist/css/splide.min.css">
+
+<div class="splide1 def-slider" style="height: 264px; margin-bottom: 20px;">
+    <div class="splide__track">
+        <ul class="splide__list">
+            <li class="splide__slide"><div class="splide__slide__container"><img class="banner-image" src="/static/media/banner.png" style="height: 264px;"></div></li>
+            <li class="splide__slide"><div class="splide__slide__container"><img class="banner-image" src="/static/media/banner.png" style="height: 264px;"></div></li>
+            <li class="splide__slide"><div class="splide__slide__container"><img class="banner-image" src="/static/media/banner.png" style="height: 264px;"></div></li>
+        </ul>
+    </div>
+
+    <script>
+        document.addEventListener( 'DOMContentLoaded', function() {
+            var splide = new Splide( '.splide1', {autoplay : true, rewind : true});
+            splide.mount();
+        });
+    </script>
+</div>
+<div class="splide2 small-slider" style="height: 264px; margin-bottom: 20px; display: none; width: 100%;">
+    <div class="splide__track">
+        <ul class="splide__list" style="justify">
+            <li class="splide__slide"><div class="splide__slide__container"><img class="banner-small-image" src="/static/media/small-banner.png" style="height: 264px;"></div></li>
+            <li class="splide__slide"><div class="splide__slide__container"><img class="banner-small-image" src="/static/media/small-banner.png" style="height: 264px;"></div></li>
+            <li class="splide__slide"><div class="splide__slide__container"><img class="banner-small-image" src="/static/media/small-banner.png" style="height: 264px;"></div></li>
+        </ul>
+    </div>
+    <div class="splide__progress">
+        <div class="splide__progress__bar">
+        </div>
+    </div>
+    <script>
+        document.addEventListener( 'DOMContentLoaded', function() {
+            var splide = new Splide( '.splide2');
+            splide.mount();
+        });
+    </script>
+</div>
+
+
 
 <div class="default-screen">
     {% for i in range(0, categories|length // 4 + (1 if categories|length % 4 != 0 else 0)) %}
