@@ -1,6 +1,6 @@
     body {
         background-color: #f2f3f3;
-        color: #111;
+        color: #ddd;
         margin: 0;
         padding: 0;
         width: 100vw;
@@ -14,7 +14,7 @@
         background-color: #ffffff;
         width: 100%;
 
-        background-color: #FFC033;
+        background-color: #0F354D;
         box-shadow: 0 10px 150px rgba(0,0,0,0.2);
         height: 7em;
         margin-bottom: 0em;
@@ -22,7 +22,7 @@
         justify-content: space-evenly;
         padding-top: 10px;
         margin-bottom: 0;
-        box-shadow: 0 0 40px #FFC033;
+        box-shadow: 0 0 40px #0F354D;
     }
 
     .header-center {
@@ -86,11 +86,11 @@
 
     footer {
         background-color: #ffffff;
-        background-color: #FFC033;
+        background-color: #0F354D;
         box-shadow: 0 10px 150px rgba(0,0,0,0.1);
         height: 7em;
         display: flex !important;
         justify-content: space-evenly;
         margin-top: 250px;
-        box-shadow: 0 0 40px #FFC033;
+        box-shadow: 0 0 40px #0F354D;
     }
