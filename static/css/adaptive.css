@@ -124,6 +124,10 @@
     .description-frame span{
         margin: 0 !important;
     }
+    .corp {
+        flex-direction: column;
+        font-size: 12px;
+    }
 }
 
 @media only screen and (max-width: 600px) {
