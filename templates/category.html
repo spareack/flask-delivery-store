@@ -25,51 +25,66 @@
 <!--    {% endfor %}-->
 <!--</div>-->
 
-<div class="small-screen">
-    {% for i in range(0, food_list|length // 2 + (1 if food_list|length % 2 != 0 else 0)) %}
-	<section class="row-objects">
-		{% for j in range(0, 2) %}
-		{% if i+j < food_list|length %}
-			<div class="list-object list-object-parent" onClick="document.location='/meal/{{ food_list[i+j].id }}'">
-		<!--		<div class="list-object-category" style="background-image: url('..//static/media/s_{{ food_list[j].id }}.jpg');"></div>-->
-				<div class="list-object-category" style="background-image: url('..//static/media/erik1.png');"></div>
-
-				<div style="max-width: 80%;"> <h5> {{ food_list[i+j].name }} </h5> </div>
-				<div style="margin-left: 0em; display: flex; flex-direction: raw;">
-
-				<div style="color: #000; margin-right: 8px;"> <h4> {{ food_list[i+j].price }} &#x20bd; </h4> </div>
-				<span style="display: flex; align-items: flex-end; margin-bottom: 8px;"> <h7 >{{ food_list[i+j].weight }} гр </h7> </span>
-			</div>
-		</div>
-		{% endif %}
-		{% endfor %}
-	</section>
-
-    {% endfor %}
-</div>
-
-
 <div class="default-screen">
     {% for i in range(0, food_list|length // 4 + (1 if food_list|length % 4 != 0 else 0)) %}
-	<section class="row-objects">
+	<section class="row-objects" style="width: 100%; justify-content: center;">
 		{% for j in range(0, 4) %}
-		{% if i+j < food_list|length %}
-			<div class="list-object list-object-parent" onClick="document.location='/meal/{{ food_list[i+j].id }}'">
-		<!--		<div class="list-object-category" style="background-image: url('..//static/media/s_{{ food_list[j].id }}.jpg');"></div>-->
-				<div class="list-object-category" style="background-image: url('..//static/media/erik1.png');"></div>
-
-				<div style="max-width: 80%;"> <h5> {{ food_list[i+j].name }} </h5> </div>
+		{% if i*4+j < food_list|length %}
+			<div class="list-object list-object-parent" onClick="document.location='/meal/{{ food_list[i*4+j].id }}'">
+<!--				<div class="list-object-category" style="background-image: url('..//static/media/s_{{ food_list[i*4+j].id }}.jpg');"></div>-->
+				<div class="list-object-category" style="background-image: url('..//static/media/s_{{ j }}.jpg');"></div>
+<!--				<div class="list-object-category" style="background-image: url('..//static/media/erik1.png');"></div>-->
+				<div style="max-width: 80%;"> <h5> {{ food_list[i*4+j].name }} </h5> </div>
 				<div style="margin-left: 0em; display: flex; flex-direction: raw;">
-
-				<div style="color: #000; margin-right: 8px;"> <h4> {{ food_list[i+j].price }} &#x20bd; </h4> </div>
-				<span style="display: flex; align-items: flex-end; margin-bottom: 8px;"> <h7 >{{ food_list[i+j].weight }} гр </h7> </span>
+					<div style="color: #000; margin-right: 8px;"> <h4> {{ food_list[i*4+j].price }} &#x20bd; </h4> </div>
+					<span style="display: flex; align-items: flex-end; margin-bottom: 8px;"> <h7 >{{ food_list[i*4+j].weight }} гр </h7> </span>
+				</div>
 			</div>
-		</div>
+		{% else %}
+			<div class="list-object list-object-parent" style="visibility: hidden;">
+				<div class="list-object-category" style="background-image: url('..//static/media/s_{{ food_list[0].id }}.jpg');"></div>
+<!--				<div class="list-object-category" style="background-image: url('..//static/media/erik1.png');"></div>-->
+				<div style="max-width: 80%;"> <h5> {{ food_list[0].name }} </h5> </div>
+				<div style="margin-left: 0em; display: flex; flex-direction: raw;">
+					<div style="color: #000; margin-right: 8px;"> <h4> {{ food_list[0].price }} &#x20bd; </h4> </div>
+					<span style="display: flex; align-items: flex-end; margin-bottom: 8px;"> <h7 >{{ food_list[0].weight }} гр </h7> </span>
+				</div>
+			</div>
 		{% endif %}
 		{% endfor %}
 	</section>
 	{% endfor %}
-</div>>
+</div>
+
+<div class="small-screen">
+    {% for i in range(0, food_list|length // 2 + (1 if food_list|length % 2 != 0 else 0)) %}
+	<section class="row-objects">
+		{% for j in range(0, 2) %}
+		{% if i*2+j < food_list|length %}
+			<div class="list-object list-object-parent" onClick="document.location='/meal/{{ food_list[i*2+j].id }}'">
+				<div class="list-object-category" style="background-image: url('..//static/media/s_{{ j }}.jpg');"></div>
+<!--				<div class="list-object-category" style="background-image: url('..//static/media/erik1.png');"></div>-->
+				<div style="max-width: 80%;"> <h5> {{ food_list[i*2+j].name }} </h5> </div>
+				<div style="margin-left: 0em; display: flex; flex-direction: raw;">
+					<div style="color: #000; margin-right: 8px;"> <h4> {{ food_list[i*2+j].price }} &#x20bd; </h4> </div>
+					<span style="display: flex; align-items: flex-end; margin-bottom: 8px;"> <h7 >{{ food_list[i*2+j].weight }} гр </h7> </span>
+				</div>
+			</div>
+		{% else %}
+			<div class="list-object list-object-parent" style="visibility: hidden;">
+				<div class="list-object-category" style="background-image: url('..//static/media/erik1.png');"></div>
+				<div style="max-width: 80%;"> <h5> {{ food_list[0].name }} </h5> </div>
+				<div style="margin-left: 0em; display: flex; flex-direction: raw;">
+					<div style="color: #000; margin-right: 8px;"> <h4> {{ food_list[0].price }} &#x20bd; </h4> </div>
+					<span style="display: flex; align-items: flex-end; margin-bottom: 8px;"> <h7 >{{ food_list[0].weight }} гр </h7> </span>
+				</div>
+			</div>
+		{% endif %}
+		{% endfor %}
+	</section>
+    {% endfor %}
+</div>
+
 </main>
 <style>
 	.list-object-parent {
@@ -78,26 +93,35 @@
 		justify-content: space-evenly;
 
 		cursor: pointer;
-		width: 21em;
-		height: 21em;
+		width: 30vw;
+		height: 30vw;
 
-		margin: 0 8px;
-		min-height: 15em;;
+		margin: 0 10px;
+		min-height: 370px;
+		max-height: 390px;
+
 		background-color: #fff;
         box-shadow: 0 10px 150px rgba(0,0,0,0.1);
 		align-items: center;
 	}
 	.list-object-category {
-        background-color: #666;
-        width: 12em;
-        height: 10em;
+		width: 85%;
+		height: 90%;
+
+		max-height: 200px;
+
+        background-color: #fff;
 		border-radius: 20px;
+
 <!--		box-shadow: 0 0px 10px rgba(0,0,0,0.05);-->
 		margin-left: 0;
 		margin-right: 0;
-		margin-top: 1em;
+		margin-top: 20px;
 		margin-bottom: 20px;
+
 		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center;
 	}
 	.list-object-parent:hover {
 		box-shadow: 0 0px 10px rgba(0,0,0,0.2);

@@ -10,7 +10,10 @@
 <main>
 <div class="food-window">
 <!--    <div class="main-frame food-image" style="background-image: url('..//static/media/s_{{ food.id }}.jpg');"></div>-->
-    <div class="main-frame food-image" style="background-image: url('..//static/media/erik.png');"></div>
+    <div class="main-frame for-food-image" style="align-items: center; display: flex; flex-direction: column; justify-content: flex-start;">
+<!--        <img class="food-image" src="../static/media/s_{{ food.id }}.jpg">-->
+        <img class="food-image" src="../static/media/s_{{ 0 }}.jpg">
+    </div>
     <div class="main-frame description-frame">
         <span style="margin-top: 3em;"> <h5>Главная / Хиты продаж / Loveстори</h5> </span>
         <span style="margin-top: 3em;"> <h1> {{ food.name }} </h1> </span>
@@ -21,7 +24,7 @@
         </div>
     </div>
 </div>
-<main>
+</main>
 
 <style>
     main {
@@ -37,14 +40,18 @@
     }
     .main-frame {
         width: 32em;
-        height: 35em;
+        height: 500px;
 
         margin: 2em 1em;
 <!--        background-color: #555;-->
     }
     .food-image {
+        width: 30vw;
+        height: 30vw;
+
         border-radius: 20px;
-        background-size: cover;
+        background-size: contain;
+        background-repeat: no-repeat;
         box-shadow: 0 10px 150px rgba(0,0,0,0.1);
     }
     .description-frame {

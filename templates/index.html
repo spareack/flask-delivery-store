@@ -8,57 +8,60 @@ Sushi
 
 {% block body %}
 <main>
-	<script src="/static/splide/dist/js/splide.min.js"></script>
+
+<div class="slider-div">
+    <script src="/static/splide/dist/js/splide.min.js"></script>
     <link rel="stylesheet" href="/static/splide/dist/css/splide.min.css">
 
-<div class="splide1 def-slider" style="height: 264px; margin-bottom: 20px;">
-    <div class="splide__track">
-        <ul class="splide__list">
-            <li class="splide__slide"><div class="splide__slide__container"><img class="banner-image" src="/static/media/banner.png" style="height: 264px;"></div></li>
-            <li class="splide__slide"><div class="splide__slide__container"><img class="banner-image" src="/static/media/banner.png" style="height: 264px;"></div></li>
-            <li class="splide__slide"><div class="splide__slide__container"><img class="banner-image" src="/static/media/banner.png" style="height: 264px;"></div></li>
-        </ul>
-    </div>
-
-    <script>
-        document.addEventListener( 'DOMContentLoaded', function() {
-            var splide = new Splide( '.splide1', {autoplay : true, rewind : true});
-            splide.mount();
-        });
-    </script>
-</div>
-<div class="splide2 small-slider" style="height: 264px; margin-bottom: 20px; display: none; width: 100%;">
-    <div class="splide__track">
-        <ul class="splide__list" style="justify">
-            <li class="splide__slide"><div class="splide__slide__container"><img class="banner-small-image" src="/static/media/small-banner.png" style="height: 264px;"></div></li>
-            <li class="splide__slide"><div class="splide__slide__container"><img class="banner-small-image" src="/static/media/small-banner.png" style="height: 264px;"></div></li>
-            <li class="splide__slide"><div class="splide__slide__container"><img class="banner-small-image" src="/static/media/small-banner.png" style="height: 264px;"></div></li>
-        </ul>
-    </div>
-    <div class="splide__progress">
-        <div class="splide__progress__bar">
+    <div class="splide1 def-slider" style="height: 15vw; margin-bottom: 40px;">
+        <div class="splide__track">
+            <ul class="splide__list">
+                <li class="splide__slide" style="background-image: url('/static/media/banner.png'); height: 15vw; background-size: cover;"></li>
+                <li class="splide__slide" style="background-image: url('/static/media/banner.png'); height: 15vw; background-size: cover;"></li>
+                <li class="splide__slide" style="background-image: url('/static/media/banner.png'); height: 15vw; background-size: cover;"></li>
+            </ul>
         </div>
+        <script>
+            document.addEventListener( 'DOMContentLoaded', function() {
+                var splide = new Splide( '.splide1', {autoplay : true, rewind : true, arrows: false});
+                splide.mount();
+            });
+        </script>
     </div>
-    <script>
-        document.addEventListener( 'DOMContentLoaded', function() {
-            var splide = new Splide( '.splide2');
-            splide.mount();
-        });
-    </script>
+        <div class="splide2 small-slider" style="width: 70vw; margin-bottom: 10px; display: none;">
+        <div class="splide__track">
+            <ul class="splide__list">
+                <li class="splide__slide" style="background-image: url('/static/media/small-banner.png'); height: 41.5vw; width: 70vw; background-size: contain;"></li>
+                <li class="splide__slide" style="background-image: url('/static/media/small-banner.png'); height: 41.5vw; width: 70vw; background-size: contain;"></li>
+                <li class="splide__slide" style="background-image: url('/static/media/small-banner.png'); height: 41.5vw; width: 7vw; background-size: contain;"></li>
+            </ul>
+        </div>
+        <script>
+            document.addEventListener( 'DOMContentLoaded', function() {
+                var splide = new Splide( '.splide2', {autoplay : true, rewind : true, arrows: false});
+                splide.mount();
+            });
+        </script>
+    </div>
 </div>
 
 
 
 <div class="default-screen">
     {% for i in range(0, categories|length // 4 + (1 if categories|length % 4 != 0 else 0)) %}
-    <section class="row-objects">
+    <section class="row-objects" style="">
         {# for j in range(0, (4 if (i == 0 and categories|length > 3) or categories|length / 4 > categories|length / i else categories|length % 4 + 1 )) #}
         {% for j in range(0, 4) %}
-            {% if i+j < categories|length %}
-            <div class="list-object list-object-image" style="background-image: url('static/media/{{ i+j }}.png');">
-        <!--    <div class="list-object list-object-image" style="background-image: url('static/media/erik1.png');">-->
-                <a href="/category/{{ i+j }}" style="display: block; text-align: center; height: 100%;"></a>
-            </div>
+            {% if i*4+j < categories|length %}
+                <div class="list-object list-object-image" style="background-image: url('static/media/{{ i*4+j }}.png');">
+            <!--    <div class="list-object list-object-image" style="background-image: url('static/media/erik1.png');">-->
+                    <a href="/category/{{ i*4+j }}" style="display: block; text-align: center; height: 100%;"></a>
+                </div>
+            {% else %}
+                <div class="list-object list-object-image" style="visibility: hidden;">
+            <!--    <div class="list-object list-object-image" style="background-image: url('static/media/erik1.png');">-->
+                    <a href="/category/0" style="display: block; text-align: center; height: 100%;"></a>
+                </div>
             {% endif %}
         {% endfor %}
     </section>
@@ -69,16 +72,22 @@ Sushi
     {% for i in range(0, categories|length // 2 + (1 if categories|length % 2 != 0 else 0)) %}
     <section class="row-objects">
         {% for j in range(0, 2) %}
-            {% if i+j < categories|length %}
-            <div class="list-object list-object-image" style="background-image: url('static/media/{{ i+j }}.png');">
-        <!--    <div class="list-object list-object-image" style="background-image: url('static/media/erik1.png');">-->
-                <a href="/category/{{ i+j }}" style="display: block; text-align: center; height: 100%;"></a>
-            </div>
+            {% if i*2+j < categories|length %}
+                <div class="list-object list-object-image" style="background-image: url('static/media/{{ i*2+j }}.png');">
+            <!--    <div class="list-object list-object-image" style="background-image: url('static/media/erik1.png');">-->
+                    <a href="/category/{{ i*2+j }}" style="display: block; text-align: center; height: 100%;"></a>
+                </div>
+            {% else %}
+                <div class="list-object list-object-image" style="visibility: hidden;">
+            <!--    <div class="list-object list-object-image" style="background-image: url('static/media/erik1.png');">-->
+                    <a href="/category/0" style="display: block; text-align: center; height: 100%;"></a>
+                </div>
             {% endif %}
         {% endfor %}
     </section>
     {% endfor %}
 </div>
+
 
 </main>
 <style>
