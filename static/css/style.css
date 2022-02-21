@@ -166,6 +166,22 @@
   left: 6px;
   bottom: 13px;
 }
+.brand {
+    cursor: pointer;
+    transition: 0.3s;
+}
+.brand:hover {
+    filter: invert(0) !important;
+}
+
+.main-logo{
+    cursor: pointer;
+    transition: 0.3s;
+    filter: saturate(0);
+}
+.main-logo:hover{
+    filter: saturate(1);
+}
 
 
 

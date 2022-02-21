@@ -129,7 +129,8 @@
         }
     .corp {
         flex-direction: column;
-        font-size: 12px;
+        font-size: 12px !important;
+        height: 60px !important;
     }
 }
 
