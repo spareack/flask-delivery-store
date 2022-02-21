@@ -7,7 +7,8 @@
     }
     .list-object {
         min-width: unset;
-        max-height: unset;
+        max-width: 263px;
+        max-height: 270px;
         height: 22vw;
     }
     .row-objects {
@@ -119,11 +120,13 @@
         height: auto !important;
     }
     .description-frame {
-        margin: 0 !important;
+        height: 100% !important;
+        margin-top: 0 !important;
+        margin-bottom: 100px !important;
     }
     .description-frame span{
-        margin: 0 !important;
-    }
+        margin: 10px 0 !important;
+        }
     .corp {
         flex-direction: column;
         font-size: 12px;

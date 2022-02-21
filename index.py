@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 
 import json
@@ -43,6 +43,16 @@ def show_category(category_id):
 def show_meal(food_id):
     food = db.session.query(Food).filter_by(id=food_id).first_or_404()
     return render_template("meal.html", food=food)
+
+
+@app.route("/sales")
+def open_sales():
+    return render_template("sales.html")
+
+
+@app.route("/favicon.ico")
+def get_favicon():
+    return send_from_directory("static/media", 'favicon.ico')
 
 
 if __name__ == '__main__':
