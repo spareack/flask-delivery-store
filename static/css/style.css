@@ -74,6 +74,8 @@
     }
     .menu-button {
    		cursor: pointer;
+        /*background-color: #FFC033;*/
+        /*background-color: #fc736a;*/
         background-color: #5bb9c7;
         width: 24vw;
         height: 6.2em;

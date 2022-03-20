@@ -31,9 +31,7 @@
 		{% for j in range(0, 4) %}
 		{% if i*4+j < food_list|length %}
 			<div class="list-object list-object-parent" onClick="document.location='/meal/{{ food_list[i*4+j].id }}'">
-<!--				<div class="list-object-category" style="background-image: url('..//static/media/s_{{ food_list[i*4+j].id }}.jpg');"></div>-->
-				<div class="list-object-category" style="background-image: url('..//static/media/s_{{ j }}.jpg');"></div>
-<!--				<div class="list-object-category" style="background-image: url('..//static/media/erik1.png');"></div>-->
+				<div class="list-object-category" style="background-image: url('..//static/media/food/{{food_list[i*4+j].filename}}');"></div>
 				<div style="max-width: 80%;"> <h5> {{ food_list[i*4+j].name }} </h5> </div>
 				<div style="margin-left: 0em; display: flex; flex-direction: raw;">
 					<div style="color: #000; margin-right: 8px;"> <h4> {{ food_list[i*4+j].price }} &#x20bd; </h4> </div>
@@ -42,8 +40,7 @@
 			</div>
 		{% else %}
 			<div class="list-object list-object-parent" style="visibility: hidden;">
-				<div class="list-object-category" style="background-image: url('..//static/media/s_{{ food_list[0].id }}.jpg');"></div>
-<!--				<div class="list-object-category" style="background-image: url('..//static/media/erik1.png');"></div>-->
+				<div class="list-object-category" style="background-image: url('..//static/media/food/{{ food_list[0].id }}.jpg');"></div>
 				<div style="max-width: 80%;"> <h5> {{ food_list[0].name }} </h5> </div>
 				<div style="margin-left: 0em; display: flex; flex-direction: raw;">
 					<div style="color: #000; margin-right: 8px;"> <h4> {{ food_list[0].price }} &#x20bd; </h4> </div>
@@ -62,8 +59,7 @@
 		{% for j in range(0, 2) %}
 		{% if i*2+j < food_list|length %}
 			<div class="list-object list-object-parent" onClick="document.location='/meal/{{ food_list[i*2+j].id }}'">
-				<div class="list-object-category" style="background-image: url('..//static/media/s_{{ j }}.jpg');"></div>
-<!--				<div class="list-object-category" style="background-image: url('..//static/media/erik1.png');"></div>-->
+				<div class="list-object-category" style="background-image: url('..//static/media/food/{{food_list[i*2+j].filename}}');"></div>
 				<div style="max-width: 80%;"> <h5> {{ food_list[i*2+j].name }} </h5> </div>
 				<div style="margin-left: 0em; display: flex; flex-direction: raw;">
 					<div style="color: #000; margin-right: 8px;"> <h4> {{ food_list[i*2+j].price }} &#x20bd; </h4> </div>

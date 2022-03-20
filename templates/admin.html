@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <meta charset="UTF-8">
+    <title>Admin</title>
+    <style>
+        input {
+            margin-right: 10px;
+            display: block;
+            word-wrap: break-word;
+            white-space: normal;
+        }
+
+        textarea {
+            font-family: "Arial";
+            height: 30px;;
+            resize: none;
+        }
+        textarea:focus {
+            height: 90px;
+            margin: 10px 0;
+
+        }
+
+    </style>
+</head>
+<body style="display: flex; flex-direction: column; align-items: center;">
+
+<form action="/save_changes" method="post" enctype="multipart/form-data">
+{% for i in range(base | length) %}
+
+    <input name="count" hidden="hidden" value="{{ i }}">
+
+    <span class="h1" style="padding: 40px 20px; margin-top: 40px; display: flex; justify-content: center;">
+        <span style="margin-right: 30px;"> {{ base[i][0] }} </span>
+
+    <input type="image" src="../static/media/logo/okey.png" class="" style="background-image: url(); width: 100px; background-size: cover;">
+<!--        <img src="" height="40" style="margin-left: 40px; margin-right: 20px;">-->
+    <div style="font-size: 20px; font-weight: normal; margin-left: 10px;">Зеленая кнопка чтобы сохранить изменения в категории "{{ base[i][0] }}"</div>
+
+    </span>
+
+
+    <div style="display: flex; align-items: center;">
+        <span class="h6" style="display: flex; margin: 5px 10px; align-items: center; width: 20px; height: auto; justify-content: flex-end;" ></span>
+
+        <input value="Название" style="width: 300px;" readonly="readonly"/>
+        <input value="Цена" style="width: 100px;" readonly="readonly"/>
+        <input value="Вес" style="width: 100px;" readonly="readonly"/>
+        <textarea style="width: 300px;" readonly="readonly">Описание</textarea>
+        <input class="form-control form-control-sm" type="file" readonly="readonly" style="width: 300px;">
+
+    </div>
+
+    {% for food in base[i][1] %}
+    <div style="display: flex; align-items: center;">
+        <span class="h6" style="display: flex; margin: 5px 10px; align-items: center; width: 20px; height: auto; justify-content: flex-end;" >{{ food.id }}</span>
+        <input name="name_{{ food.id }}" style="width: 300px;" value="{{food.name}}">
+        <input name="price_{{ food.id }}" style="width: 100px;" value="{{food.price}}">
+        <input name="weight_{{ food.id }}" style="width: 100px;" value="{{food.weight}}">
+        <textarea name="description_{{ food.id }}" style="width: 300px;">{{food.description}}</textarea>
+        <input  name="file_{{ food.id }}" class="form-control form-control-sm" type="file" style="width: 300px;">
+
+    </div>
+    {% endfor %}
+
+{% endfor %}
+</form>
+
+<div style="height: 200px;"></div>
+
+
+</body>
+</html>

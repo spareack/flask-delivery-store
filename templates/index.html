@@ -53,14 +53,14 @@ Sushi
         {# for j in range(0, (4 if (i == 0 and categories|length > 3) or categories|length / 4 > categories|length / i else categories|length % 4 + 1 )) #}
         {% for j in range(0, 4) %}
             {% if i*4+j < categories|length %}
-                <div class="list-object list-object-image" style="background-image: url('static/media/{{ i*4+j }}.png');">
+                <div class="list-object list-object-image" style="background-image: url('static/media/category/{{ i*4+j }}.png');">
             <!--    <div class="list-object list-object-image" style="background-image: url('static/media/erik1.png');">-->
-                    <a href="/category/{{ i*4+j }}" style="display: block; text-align: center; height: 100%;"></a>
+                    <a href="/category/{{ i*4+j+1 }}" style="display: block; text-align: center; height: 100%;"></a>
                 </div>
             {% else %}
                 <div class="list-object list-object-image" style="visibility: hidden;">
             <!--    <div class="list-object list-object-image" style="background-image: url('static/media/erik1.png');">-->
-                    <a href="/category/0" style="display: block; text-align: center; height: 100%;"></a>
+                    <a href="/category/1" style="display: block; text-align: center; height: 100%;"></a>
                 </div>
             {% endif %}
         {% endfor %}
@@ -73,14 +73,14 @@ Sushi
     <section class="row-objects">
         {% for j in range(0, 2) %}
             {% if i*2+j < categories|length %}
-                <div class="list-object list-object-image" style="background-image: url('static/media/{{ i*2+j }}.png');">
+                <div class="list-object list-object-image" style="background-image: url('static/media/category/{{ i*2+j }}.png');">
             <!--    <div class="list-object list-object-image" style="background-image: url('static/media/erik1.png');">-->
-                    <a href="/category/{{ i*2+j }}" style="display: block; text-align: center; height: 100%;"></a>
+                    <a href="/category/{{ i*2+j+1 }}" style="display: block; text-align: center; height: 100%;"></a>
                 </div>
             {% else %}
                 <div class="list-object list-object-image" style="visibility: hidden;">
             <!--    <div class="list-object list-object-image" style="background-image: url('static/media/erik1.png');">-->
-                    <a href="/category/0" style="display: block; text-align: center; height: 100%;"></a>
+                    <a href="/category/1" style="display: block; text-align: center; height: 100%;"></a>
                 </div>
             {% endif %}
         {% endfor %}
