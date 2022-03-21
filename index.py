@@ -1,6 +1,7 @@
-from flask import Flask, render_template, send_from_directory, redirect, request
+from flask import Flask, render_template, send_from_directory, redirect, request, session
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.utils import secure_filename
+from flask_session import Session
 
 import json
 import traceback
@@ -9,6 +10,10 @@ import os
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///baza.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_TYPE"] = "filesystem"
+app.config["SECRET_PASS"] = "zs9XYCbTPKvux46UJckflw"
+Session(app)
 
 db = SQLAlchemy(app)
 
@@ -55,17 +60,30 @@ def open_sales():
     return render_template("sales.html")
 
 
-@app.route("/admin")
+@app.route("/admin", methods=['GET', 'POST'])
 def open_admin():
-    base = []
-    all_categories = db.session.query(Categories).all()
-    for category in all_categories:
-        foods_ids = json.loads(category.food_list)
-        food_list = db.session.query(Food).filter(Food.id.in_(foods_ids)).all()
+    if request.method == 'GET':
+        if "auth" in session and session['auth'] == app.config["SECRET_PASS"]:
+            base = list()
+            all_categories = db.session.query(Categories).all()
+            for category in all_categories:
+                foods_ids = json.loads(category.food_list)
+                food_list = db.session.query(Food).filter(Food.id.in_(foods_ids)).all()
+                base.append([category.name, food_list])
+            return render_template("admin.html", base=base)
+        else:
+            return render_template("admin_auth.html")
 
-        base.append([category.name, food_list])
+    elif request.method == 'POST':
+        password = request.form.get("pass")
+        session['auth'] = password
+        return redirect("/admin")
 
-    return render_template("admin.html", base=base)
+
+@app.route("/admin_out")
+def admin_out():
+    session["name"] = None
+    return redirect('/admin')
 
 
 @app.route("/save_changes", methods=["POST"])
@@ -90,7 +108,11 @@ def save_changes():
                     if name[1].lower() in ['jpg', 'jpeg', 'png']:
                         endgame = str(index[0]-1) + "." + name[1]
 
-                        file.save(os.path.join(os.path.abspath(os.getcwd()), "mysite/static/media/food", endgame))
+                        path = os.path.join(os.path.join(os.path.abspath(os.getcwd()), "mysite/static/media/food", endgame))
+                        os.path.isfile(path)
+                        os.remove(path)
+                        file.save(path)
+
                         food.filename = endgame
                         db.session.commit()
 
