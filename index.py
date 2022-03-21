@@ -90,7 +90,7 @@ def save_changes():
                     if name[1].lower() in ['jpg', 'jpeg', 'png']:
                         endgame = str(index[0]-1) + "." + name[1]
 
-                        file.save(os.path.join(os.path.abspath(os.getcwd()), "static/media/food", endgame))
+                        file.save(os.path.join(os.path.abspath(os.getcwd()), "mysite/static/media/food", endgame))
                         food.filename = endgame
                         db.session.commit()
 
