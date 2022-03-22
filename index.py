@@ -104,7 +104,7 @@ def save_changes():
                     if name[1].lower() in ['jpg', 'jpeg', 'png']:
                         endgame = str(category.id-1) + "." + name[1]
 
-                        path = os.path.join(os.path.join(os.path.abspath(os.getcwd()), "mysite/static/media/food", endgame))
+                        path = os.path.join(os.path.join(os.path.abspath(os.getcwd()), "mysite/static/media/category", endgame))
                         if os.path.isfile(path):
                             os.remove(path)
 
