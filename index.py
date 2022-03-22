@@ -22,6 +22,7 @@ class Categories(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
     food_list = db.Column(db.String)
+    filename = db.Column(db.String, default="-1.png")
 
 
 class Food(db.Model):
@@ -93,6 +94,23 @@ def save_changes():
         try:
             foods_ids = db.session.query(Food.id).all()
 
+            categories = db.session.query(Categories).all()
+            for category in categories:
+
+                category_file = request.files["category_" + (category.id - 1)]
+
+                if category_file and category_file.filename != '' and '.' in category_file.filename:
+                    name = secure_filename(category_file.filename).split(".")
+                    if name[1].lower() in ['jpg', 'jpeg', 'png']:
+                        endgame = str(category.id[0]-1) + "." + name[1]
+
+                        path = os.path.join(os.path.join(os.path.abspath(os.getcwd()), "mysite/static/media/food", endgame))
+                        os.path.isfile(path)
+                        os.remove(path)
+                        category_file.save(path)
+                        category.filename = endgame
+
+
             for index in foods_ids:
                 food = db.session.query(Food).filter_by(id=index[0]).first_or_404()
 
@@ -114,7 +132,6 @@ def save_changes():
                         file.save(path)
 
                         food.filename = endgame
-                        db.session.commit()
 
                 if food.name != name_temp or food.price != price_temp or food.weight != weight_temp \
                         or food.description != description_temp:
@@ -131,7 +148,7 @@ def save_changes():
                     if food.description != description_temp:
                         food.description = description_temp
 
-                    db.session.commit()
+            db.session.commit()
 
         except Exception as e:
             print(str(e))

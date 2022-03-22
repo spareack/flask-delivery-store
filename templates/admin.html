@@ -39,7 +39,10 @@
             <input name="count" hidden="hidden" value="{{ i }}">
 
             <span class="h1" style="padding: 40px 20px; margin-top: 40px; display: flex; justify-content: center;">
-                <span style="margin-right: 30px;"> {{ base[i][0] }} </span>
+                <div style="display: flex; flex-direction: column; justify-conetnt: space-around;">
+                    <span style="margin-right: 30px; margin-bottom: 20px;"> {{ base[i][0] }} </span>
+                    <input name="category_{{ i }}" class="form-control form-control-sm" type="file" readonly="readonly" style="width: 300px;">
+                </div>
 
             <input type="image" src="../static/media/logo/okey.png" class="" style="background-image: url(); width: 100px; background-size: cover;">
         <!--        <img src="" height="40" style="margin-left: 40px; margin-right: 20px;">-->
