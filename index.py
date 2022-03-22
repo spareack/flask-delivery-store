@@ -105,8 +105,9 @@ def save_changes():
                         endgame = str(category.id-1) + "." + name[1]
 
                         path = os.path.join(os.path.join(os.path.abspath(os.getcwd()), "mysite/static/media/food", endgame))
-                        os.path.isfile(path)
-                        os.remove(path)
+                        if os.path.isfile(path):
+                            os.remove(path)
+
                         category_file.save(path)
                         category.filename = endgame
 
@@ -126,8 +127,8 @@ def save_changes():
                         endgame = str(index[0]-1) + "." + name[1]
 
                         path = os.path.join(os.path.join(os.path.abspath(os.getcwd()), "mysite/static/media/food", endgame))
-                        os.path.isfile(path)
-                        os.remove(path)
+                        if os.path.isfile(path):
+                            os.remove(path)
                         file.save(path)
 
                         food.filename = endgame
