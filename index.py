@@ -102,7 +102,7 @@ def save_changes():
                 if category_file and category_file.filename != '' and '.' in category_file.filename:
                     name = secure_filename(category_file.filename).split(".")
                     if name[1].lower() in ['jpg', 'jpeg', 'png']:
-                        endgame = str(category.id[0]-1) + "." + name[1]
+                        endgame = str(category.id-1) + "." + name[1]
 
                         path = os.path.join(os.path.join(os.path.abspath(os.getcwd()), "mysite/static/media/food", endgame))
                         os.path.isfile(path)
