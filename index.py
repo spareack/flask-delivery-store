@@ -97,7 +97,7 @@ def save_changes():
             categories = db.session.query(Categories).all()
             for category in categories:
 
-                category_file = request.files["category_" + (category.id - 1)]
+                category_file = request.files["category_" + str(category.id - 1)]
 
                 if category_file and category_file.filename != '' and '.' in category_file.filename:
                     name = secure_filename(category_file.filename).split(".")
@@ -109,7 +109,6 @@ def save_changes():
                         os.remove(path)
                         category_file.save(path)
                         category.filename = endgame
-
 
             for index in foods_ids:
                 food = db.session.query(Food).filter_by(id=index[0]).first_or_404()
