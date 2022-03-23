@@ -1,7 +1,8 @@
-from flask import Flask, render_template, send_from_directory, redirect, request, session
+from flask import Flask, render_template, send_from_directory, redirect, request, session, send_file
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.utils import secure_filename
 from flask_session import Session
+from flask_frozen import Freezer
 
 import json
 import traceback
@@ -13,6 +14,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 app.config["SECRET_PASS"] = "zs9XYCbTPKvux46UJckflw"
+freezer = Freezer(app)
 Session(app)
 
 db = SQLAlchemy(app)
@@ -40,7 +42,7 @@ def hello_world():
     return render_template("index.html", categories=all_categories)
 
 
-@app.route("/category/<int:category_id>")
+@app.route("/category/<int:category_id>/")
 def show_category(category_id):
     category = db.session.query(Categories).filter_by(id=category_id).first_or_404()
 
@@ -50,18 +52,33 @@ def show_category(category_id):
     return render_template("category.html", food_list=food_list, category_name=category.name)
 
 
-@app.route("/meal/<int:food_id>")
+@freezer.register_generator
+def show_category():
+    all_categories = db.session.query(Categories).all()
+    for category in all_categories:
+        yield {'category_id': category.id}
+
+
+@app.route("/meal/<int:food_id>/")
 def show_meal(food_id):
     food = db.session.query(Food).filter_by(id=food_id).first_or_404()
     return render_template("meal.html", food=food)
 
 
-@app.route("/sales")
+@freezer.register_generator
+def show_meal():
+    all_food = db.session.query(Food).all()
+    for food in all_food:
+        yield {'food_id': food.id}
+
+
+@app.route("/sales/")
 def open_sales():
+    # return render_template("sales.html")
     return render_template("sales.html")
 
 
-@app.route("/admin", methods=['GET', 'POST'])
+@app.route("/admin/", methods=['GET'])
 def open_admin():
     if request.method == 'GET':
         if "auth" in session and session['auth'] == app.config["SECRET_PASS"]:
@@ -71,20 +88,33 @@ def open_admin():
                 foods_ids = json.loads(category.food_list)
                 food_list = db.session.query(Food).filter(Food.id.in_(foods_ids)).all()
                 base.append([category.name, food_list])
-            return render_template("admin.html", base=base)
+
+            return render_template("admin.html")
         else:
             return render_template("admin_auth.html")
 
-    elif request.method == 'POST':
+
+@app.route("/auth_admin/", methods=['GET', 'POST'])
+def auth_admin():
+
+    if request.method == 'POST':
+        return "asd"
+
         password = request.form.get("pass")
+        return "asd"
+
         session['auth'] = password
-        return redirect("/admin")
+        return "asd"
+
+        return redirect("/admin/")
+
+    return "asdfgh"
 
 
 @app.route("/admin_out")
 def admin_out():
     session["name"] = None
-    return redirect('/admin')
+    return redirect('/admin/')
 
 
 @app.route("/save_changes", methods=["POST"])
@@ -165,4 +195,6 @@ def get_favicon():
 
 
 if __name__ == '__main__':
-    app.run()
+    # freezer.freeze()
+    freezer.run(debug=True)
+    # app.run()

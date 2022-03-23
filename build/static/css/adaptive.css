@@ -1,0 +1,148 @@
+
+/*wide screen*/
+
+@media only screen and (max-width: 1190px) {
+    h5, h4, h7 {
+        font-size: 20px;
+    }
+    .list-object {
+        min-width: unset;
+        max-width: 263px;
+        max-height: 270px;
+        height: 22vw;
+    }
+    .row-objects {
+        justify-content: space-around;
+    }
+    main{
+        width: 95%;
+    }
+    .list-object-parent {
+
+    }
+    .def-slider {
+        height: 22vw !important;
+    }
+    .def-slider .splide__track .splide__list .splide__slide {
+        height: 22vw !important;
+    }
+}
+/*meidum desktops*/
+
+@media only screen and (max-width: 1100px) {
+
+    .header-object-default-lang {
+        display: none !important;
+    }
+    .default-header header{
+        justify-content: space-start;
+    }
+
+}
+@media only screen and (max-width: 900px) {
+    .header-object-default-sales {
+        display: none !important;
+    }
+    .def-header-object-label {
+        font-size: 28px !important;
+        width: 150px !important;
+    }
+
+}
+/*small devices*/
+@media only screen and (max-width: 768px) {
+    .default-header {
+        display: none;
+    }
+    .mobile-header {
+        display: unset !important;
+    }
+    .small-screen {
+        display: block;
+    }
+    .default-screen {
+    display: none;
+    }
+    .list-object {
+        height: 40vw;
+    }
+    .header-object {
+        margin: 0 10px;
+    }
+
+    /*categories*/
+    .list-object-parent {
+		width: 40vw !important;
+		height: 50vw !important;
+        min-height: 250px !important;
+    }
+    h5, h4, h7 {
+        font-size: 20px;
+    }
+    .list-object-category {
+        width: 35vw !important;
+        height: 30vw !important;
+    }
+    .def-slider {
+        display: none !important;
+    }
+    .small-slider {
+        display: block !important;
+    }
+    .def-header-object-label {
+        font-size: 80px !important;
+        width: 150px !important;
+    }
+    .slider-div {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    /*meal*/
+    .main-frame {
+        width: 90% !important;
+    }
+    .for-food-image {
+        margin: 0 !important;
+        margin-bottom: 40px !important;
+        flex-direction: row;
+        justify-content: center;
+
+        height: unset !important;
+        width: 100% !important;
+    }
+    .food-window {
+        flex-direction: column;
+    }
+    .food-image {
+        /*background-size: cover !important;*/
+        width: 100% !important;
+        height: auto !important;
+    }
+    .description-frame {
+        height: 100% !important;
+        margin-top: 0 !important;
+        margin-bottom: 100px !important;
+    }
+    .description-frame span{
+        margin: 10px 0 !important;
+        }
+    .corp {
+        flex-direction: column;
+        font-size: 12px !important;
+        height: 60px !important;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    h5, h4, h7 {
+        font-size: 15px; !important;
+    }
+}
+/**/
+
+@media only screen and (max-width: 430px) {
+    .header-object-sales {
+        display: none !important;
+    }
+}
